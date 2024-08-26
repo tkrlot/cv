@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdualrahman CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://i.imgur.com/1eDg9Kt.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            transition: background-color 0.5s, color 0.5s;
+            position: relative;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background-color: #1e1e1e;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        body.arabic .container {
+            text-align: right;
+            font-size: 16px;
+        }
+        body.english .container {
+            font-size: 14px;
+        }
+        h1, h2, h3 {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 10px;
+            color: inherit;
+            transition: color 0.3s, transform 0.3s;
+        }
+        h1:hover, h2:hover, h3:hover {
+            color: #f39c12; /* Light gold color */
+            transform: scale(1.03); /* Slightly smaller scale transformation */
+        }
+        .signature {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 20px;
+            text-align: right;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .signature:hover {
+            color: #f39c12;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ffffff;
+            margin: 20px 0;
+        }
+        .education, .languages, .courses {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 14px;
+            padding: 0 10px;
+        }
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .courses-container .course-item {
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #2c2c2c;
+        }
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #757575;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 14px;
+        }
+        .language-toggle:hover {
+            background-color: #616161;
+        }
+        .btn, .contact-btn {
+            background-color: #757575;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin: 5px;
+        }
+        .btn:hover, .contact-btn:hover {
+            background-color: #616161;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* New styles for birthday overlay */
+        #name {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .birthday-overlay {
+            display: none;
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        #name:hover .birthday-overlay {
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .signature {
+                font-size: 18px;
+            }
+            .language-toggle {
+                top: 10px;
+                left: 10px;
+                padding: 8px;
+            }
+            .btn, .contact-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            .signature {
+                font-size: 16px;
+            }
+            .language-toggle {
+                top: 5px;
+                left: 5px;
+                padding: 6px;
+                font-size: 12px;
+            }
+            .btn, .contact-btn {
+                padding: 6px 12px;
+                font-size: 10px;
+            }
+            .courses-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-toggle" onclick="toggleLanguage()">Arabic</div>
+
+    <div class="container">
+        <h1 id="name">
+            Abdualrahman M Al-Otaibi
+            <div class="birthday-overlay">Birthday: 05/05/1999</div>
+        </h1>
+        <h2 id="title">Marketing</h2>
+
+        <div class="section">
+            <h3 id="about-heading">About Me</h3>
+            <p id="about-text">I am proficient in English and have a deep passion for exploring new cultures, making me well-suited for diverse, multicultural environments. My enthusiasm for languages and international settings highlights my ability to connect with colleagues from various backgrounds. I hold a diploma in marketing and have a strong affinity for management and administration. My diverse interests, including PC gaming and development knowledge, complement my technical skills and keep me engaged with the latest trends. In my free time, I explore travel vlogs and maintain a travel diary, fueling my curiosity and love for new experiences. I am eager to leverage my skills and interests in a dynamic, multi-disciplinary environment.</p>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h3 id="education-heading">Education</h3>
+            <div class="education" id="education-text">
+                <div>2022</div>
+                <div>Diploma of Marketing, Dammam College of Technology</div>
+                <div>Dammam</div>
+                <div>Grade: Good</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h3 id="languages-heading">Languages</h3>
+            <div class="languages" id="languages-text">
+                <div>Arabic: Native</div>
+                <div>English: Excellent</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h3 id="courses-heading">Courses</h3>
+            <div class="courses-container">
+                <div class="course-item">Aug 2020: Conversational English Skills for Beginners, Doroob</div>
+                <div class="course-item">Aug 2020: English-Writing, Doroob</div>
+                <div class="course-item">Aug 2020: English-Reading, Doroob</div>
+                <div class="course-item">Aug 2020: IT in the Workplace - Master Microsoft Office, Doroob</div>
+                <div class="course-item">Aug 2020: E-Marketing Methods and Techniques, Doroob</div>
+                <div class="course-item">Aug 2020: English-Listening, Doroob</div>
+                <div class="course-item">Aug 2020: Cyber Security, Doroob</div>
+                <div class="course-item">Aug 2020: English-Grammar, Doroob</div>
+                <div class="course-item">Aug 2020: Principles of Customer Service, Doroob</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <button class="btn" onclick="showContactOptions()">Contact Me</button>
+            <div class="contact-options" style="display:none;">
+                <button class="contact-btn" onclick="window.location.href='mailto:Abdualrahmantt@gmail.com'">Email</button>
+                <button class="contact-btn" onclick="window.location.href='tel:+966557974316'">Call</button>
+                <button class="contact-btn" onclick="window.location.href='https://wa.me/966557974316'">WhatsApp</button>
+            </div>
+        </div>
+
+        <div class="signature">
+            압둘라흐
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage() {
+            const languageToggle = document.querySelector('.language-toggle');
+            if (document.body.classList.contains('english')) {
+                languageToggle.textContent = 'English';
+                document.body.classList.remove('english');
+                document.body.classList.add('arabic');
+                document.getElementById('name').textContent = 'عبدالرحمن مطلق العتيبي';
+                document.getElementById('title').textContent = 'تسويق';
+                document.getElementById('about-heading').textContent = 'معلومات عني';
+                document.getElementById('about-text').innerHTML = `
+                    <p>أنا متقن للغة الإنجليزية ولدي شغف عميق لاستكشاف ثقافات جديدة، مما يجعلني مناسبًا لبيئات متعددة الثقافات. حماسي للغات والإعدادات الدولية يبرز قدرتي على التواصل مع زملاء من خلفيات متنوعة. أحمل دبلومًا في التسويق ولدي ميل قوي للإدارة والإدارة. اهتماماتي المتنوعة، بما في ذلك ألعاب الكمبيوتر ومعرفة التطوير، تكمل مهاراتي التقنية وتبقيني على اطلاع بأحدث الاتجاهات. في وقت فراغي، أستكشف مدونات السفر وأحتفظ بدفتر ملاحظات السفر، مما يغذي فضولي وحبي للتجارب الجديدة. أنا حريص على استغلال مهاراتي واهتماماتي في بيئة ديناميكية متعددة التخصصات.</p>`;
+                document.getElementById('education-heading').textContent = 'التعليم';
+                document.getElementById('education-text').innerHTML = `
+                    <div>2022</div>
+                    <div>دبلوم تسويق، كلية الدمام التقنية</div>
+                    <div>الدمام</div>
+                    <div>الدرجة: جيد</div>`;
+                document.getElementById('languages-heading').textContent = 'اللغات';
+                document.getElementById('languages-text').innerHTML = `
+                    <div>العربية: الأم</div>
+                    <div>الإنجليزية: ممتاز</div>`;
+                document.getElementById('courses-heading').textContent = 'الدورات';
+                document.querySelectorAll('.course-item').forEach((item, index) => {
+                    const courses = [
+                        'أغسطس 2020: مهارات اللغة الإنجليزية المحادثة للمبتدئين، دوروب',
+                        'أغسطس 2020: الكتابة باللغة الإنجليزية، دوروب',
+                        'أغسطس 2020: القراءة باللغة الإنجليزية، دوروب',
+                        'أغسطس 2020: تكنولوجيا المعلومات في مكان العمل - إتقان Microsoft Office، دوروب',
+                        'أغسطس 2020: طرق وتقنيات التسويق الإلكتروني، دوروب',
+                        'أغسطس 2020: الاستماع باللغة الإنجليزية، دوروب',
+                        'أغسطس 2020: الأمن السيبراني، دوروب',
+                        'أغسطس 2020: قواعد اللغة الإنجليزية، دوروب',
+                        'أغسطس 2020: مبادئ خدمة العملاء، دوروب'
+                    ];
+                    item.textContent = courses[index];
+                });
+            } else {
+                languageToggle.textContent = 'Arabic';
+                document.body.classList.remove('arabic');
+                document.body.classList.add('english');
+                document.getElementById('name').textContent = 'Abdualrahman M Al-Otaibi';
+                document.getElementById('title').textContent = 'Marketing';
+                document.getElementById('about-heading').textContent = 'About Me';
+                document.getElementById('about-text').innerHTML = `
+                    <p>I am proficient in English and have a deep passion for exploring new cultures, making me well-suited for diverse, multicultural environments. My enthusiasm for languages and international settings highlights my ability to connect with colleagues from various backgrounds. I hold a diploma in marketing and have a strong affinity for management and administration. My diverse interests, including PC gaming and development knowledge, complement my technical skills and keep me engaged with the latest trends. In my free time, I explore travel vlogs and maintain a travel diary, fueling my curiosity and love for new experiences. I am eager to leverage my skills and interests in a dynamic, multi-disciplinary environment.</p>`;
+                document.getElementById('education-heading').textContent = 'Education';
+                document.getElementById('education-text').innerHTML = `
+                    <div>2022</div>
+                    <div>Diploma of Marketing, Dammam College of Technology</div>
+                    <div>Dammam</div>
+                    <div>Grade: Good</div>`;
+                document.getElementById('languages-heading').textContent = 'Languages';
+                document.getElementById('languages-text').innerHTML = `
+                    <div>Arabic: Native</div>
+                    <div>English: Excellent</div>`;
+                document.getElementById('courses-heading').textContent = 'Courses';
+                document.querySelectorAll('.course-item').forEach((item, index) => {
+                    const courses = [
+                        'Aug 2020: Conversational English Skills for Beginners, Doroob',
+                        'Aug 2020: English-Writing, Doroob',
+                        'Aug 2020: English-Reading, Doroob',
+                        'Aug 2020: IT in the Workplace - Master Microsoft Office, Doroob',
+                        'Aug 2020: E-Marketing Methods and Techniques, Doroob',
+                        'Aug 2020: English-Listening, Doroob',
+                        'Aug 2020: Cyber Security, Doroob',
+                        'Aug 2020: English-Grammar, Doroob',
+                        'Aug 2020: Principles of Customer Service, Doroob'
+                    ];
+                    item.textContent = courses[index];
+                });
+            }
+        }
+
+        function showContactOptions() {
+            const contactOptions = document.querySelector('.contact-options');
+            contactOptions.style.display = contactOptions.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Initialize with English language
+        document.body.classList.add('english');
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable F12 and other dev tools shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
+
+        // Disable right-click on images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        // Check if dev tools are open
+        const devToolsOpen = () => {
+            const threshold = 160; 
+            return window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold;
+        };
+
+        setInterval(() => {
+            if (devToolsOpen()) {
+                alert('Thanks as you saw my CV, i will be satisfying for you!');
+                window.location.href = 'about:blank'; 
+            }
+        }, 31536000000);
+    </script>
+</body>
+</html>
